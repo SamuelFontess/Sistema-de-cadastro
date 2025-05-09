@@ -1,6 +1,7 @@
 package Main;
 
-import Repository.File;
+import Model.Dao.petDaoJDBC;
+import db.DB;
 
 import java.util.Scanner;
 
@@ -8,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int opcao;
+        int opcao = 0;
 
         do {
             System.out.println("\n--- MENU PET ---");
@@ -20,12 +21,23 @@ public class Main {
             System.out.println("6. Sair");
             System.out.print("Escolha uma opção: ");
 
-            opcao = sc.nextInt();
-            sc.nextLine();
+            if (sc.hasNextLine()) {
+                String entrada = sc.nextLine();
+                try {
+                    opcao = Integer.parseInt(entrada);
+                } catch (NumberFormatException e) {
+                    System.out.println("Entrada inválida. Digite um número.");
+                    opcao = -1;
+                    continue;
+                }
+            } else {
+                System.out.println("Nenhuma linha encontrada. Encerrando.");
+                break;
+            }
 
             switch (opcao) {
                 case 1:
-                    File.readFile();
+                Services.cadastropet.createPet();
                     break;
                 case 2:
 
@@ -49,9 +61,5 @@ public class Main {
         } while (opcao != 6);
 
         sc.close();
-
-
-
-
     }
 }

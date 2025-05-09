@@ -1,0 +1,40 @@
+package Model.Entities;
+
+public class petAddress {
+    int Number;
+    String city;
+    String street;
+
+    public petAddress(){
+    }
+
+    public petAddress(String city, int houseNumber, String street) {
+        this.city = city;
+        this.Number = houseNumber;
+        this.street = street;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public int getNumber() {
+        return Number;
+    }
+
+    public void setNumber(int houseNumber) {
+        this.Number = houseNumber;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+}
