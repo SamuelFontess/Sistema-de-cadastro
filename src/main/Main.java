@@ -1,7 +1,6 @@
-package Main;
+package main;
 
-import Model.Dao.petDaoJDBC;
-import db.DB;
+import services.CadastroPet;
 
 import java.util.Scanner;
 
@@ -37,7 +36,7 @@ public class Main {
 
             switch (opcao) {
                 case 1:
-                Services.cadastropet.createPet();
+                CadastroPet.createPet();
                     break;
                 case 2:
 

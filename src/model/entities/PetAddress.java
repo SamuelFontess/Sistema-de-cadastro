@@ -1,14 +1,14 @@
-package Model.Entities;
+package model.entities;
 
-public class petAddress {
+public class PetAddress {
     int Number;
     String city;
     String street;
 
-    public petAddress(){
+    public PetAddress(){
     }
 
-    public petAddress(String city, int houseNumber, String street) {
+    public PetAddress(String city, int houseNumber, String street) {
         this.city = city;
         this.Number = houseNumber;
         this.street = street;

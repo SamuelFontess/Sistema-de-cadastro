@@ -1,31 +1,31 @@
-package Model.Dao;
+package model.Dao;
 
-import Model.Entities.*;
+import model.entities.*;
 import db.DB;
 import db.DbException;
 import db.DbIntegrityException;
-import Model.Entities.pet;
+import model.entities.Pet;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class petDaoJDBC implements petDao {
+public class PetDaoJDBC implements PetDao {
     private Connection conn;
 
-    public petDaoJDBC(Connection connection) {
+    public PetDaoJDBC(Connection connection) {
         this.conn = DB.getConnection();
     }
 
-    private pet instantiatePet(ResultSet rs) throws SQLException {
-        pet pet = new pet();
-        petAddress address = new petAddress();
+    private Pet instantiatePet(ResultSet rs) throws SQLException {
+        Pet pet = new Pet();
+        PetAddress address = new PetAddress();
 
         pet.setId(rs.getInt("Id"));
         pet.setPetName(rs.getString("nome"));
         pet.setPetSurname(rs.getString("sobrenome"));
-        pet.setPetType(petType.valueOf(rs.getString("tipo_pet")));
-        pet.setPetGender(petEnum.valueOf(rs.getString("sexo")));
+        pet.setPetType(PetType.valueOf(rs.getString("tipo_pet")));
+        pet.setPetGender(PetEnum.valueOf(rs.getString("sexo")));
         pet.setPetAge(rs.getInt("idade"));
         pet.setPetWeight(rs.getFloat("peso"));
         pet.setPetBreed(rs.getString("raca"));
@@ -40,7 +40,7 @@ public class petDaoJDBC implements petDao {
 
 
     @Override
-    public void insert(pet obj) {
+    public void insert(Pet obj) {
         PreparedStatement st = null;
         try {
             st = conn.prepareStatement(
@@ -80,7 +80,7 @@ public class petDaoJDBC implements petDao {
     }
 
     @Override
-    public void update(pet obj) {
+    public void update(Pet obj) {
         PreparedStatement st = null;
         try {
             st = conn.prepareStatement(
@@ -139,7 +139,7 @@ public class petDaoJDBC implements petDao {
     }
 
     @Override
-    public pet findById(Integer id) {
+    public Pet findById(Integer id) {
         PreparedStatement st = null;
         ResultSet rs = null;
 
@@ -151,7 +151,7 @@ public class petDaoJDBC implements petDao {
             rs = st.executeQuery();
 
             if (rs.next()) {
-                pet obj = instantiatePet(rs);
+                Pet obj = instantiatePet(rs);
                 return obj;
             }
             return null;
@@ -166,7 +166,7 @@ public class petDaoJDBC implements petDao {
     }
 
     @Override
-    public pet findByName(String name) {
+    public Pet findByName(String name) {
         PreparedStatement st = null;
         ResultSet rs = null;
 
@@ -178,7 +178,7 @@ public class petDaoJDBC implements petDao {
             rs = st.executeQuery();
 
             if (rs.next()) {
-                pet obj = instantiatePet(rs);
+                Pet obj = instantiatePet(rs);
                 return obj;
             }
             return null;
@@ -193,7 +193,7 @@ public class petDaoJDBC implements petDao {
     }
 
     @Override
-    public pet findByType(petType type) {
+    public Pet findByType(PetType type) {
         PreparedStatement st = null;
         ResultSet rs = null;
 
@@ -205,7 +205,7 @@ public class petDaoJDBC implements petDao {
             rs = st.executeQuery();
 
             if (rs.next()) {
-                pet obj = instantiatePet(rs);
+                Pet obj = instantiatePet(rs);
                 return obj;
             }
             return null;
@@ -220,7 +220,7 @@ public class petDaoJDBC implements petDao {
     }
 
     @Override
-    public pet findByGender(petEnum gender) {
+    public Pet findByGender(PetEnum gender) {
         PreparedStatement st = null;
         ResultSet rs = null;
 
@@ -232,7 +232,7 @@ public class petDaoJDBC implements petDao {
             rs = st.executeQuery();
 
             if (rs.next()) {
-                pet obj = instantiatePet(rs);
+                Pet obj = instantiatePet(rs);
                 return obj;
             }
             return null;
@@ -247,7 +247,7 @@ public class petDaoJDBC implements petDao {
     }
 
     @Override
-    public List<pet> findAll() {
+    public List<Pet> findAll() {
         PreparedStatement st = null;
         ResultSet rs = null;
 
@@ -257,10 +257,10 @@ public class petDaoJDBC implements petDao {
 
             rs = st.executeQuery();
 
-            List<pet> list = new ArrayList<>();
+            List<Pet> list = new ArrayList<>();
 
             while (rs.next()) {
-                pet obj = instantiatePet(rs);
+                Pet obj = instantiatePet(rs);
                 list.add(obj);
             }
 

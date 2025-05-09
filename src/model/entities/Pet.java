@@ -1,20 +1,20 @@
-package Model.Entities;
+package model.entities;
 
-public class pet {
+public class Pet {
     private String petName;
     private String petSurname;
-    private petType petType;
-    private petEnum petGender;
-    private petAddress petAddress;
+    private PetType petType;
+    private PetEnum petGender;
+    private PetAddress petAddress;
     private float petAge;
     private float petWeight;
     private String petBreed;
     private int id;
 
-    public pet() {
+    public Pet() {
     }
 
-    public pet(String petName, String petSurname, String petBreed, float petWeight, float petAge, petAddress petAddress, petEnum petGender, petType petType) {
+    public Pet(String petName, String petSurname, String petBreed, float petWeight, float petAge, PetAddress petAddress, PetEnum petGender, PetType petType) {
         this.petName = petName;
         this.petSurname = petSurname;
         this.petBreed = petBreed;
@@ -58,27 +58,27 @@ public class pet {
         this.petSurname = petSurname;
     }
 
-    public petType getPetType() {
+    public PetType getPetType() {
         return petType;
     }
 
-    public void setPetType(petType petType) {
+    public void setPetType(PetType petType) {
         this.petType = petType;
     }
 
-    public petEnum getPetGender() {
+    public PetEnum getPetGender() {
         return petGender;
     }
 
-    public void setPetGender(petEnum petGender) {
+    public void setPetGender(PetEnum petGender) {
         this.petGender = petGender;
     }
 
-    public petAddress getPetAddress() {
+    public PetAddress getPetAddress() {
         return petAddress;
     }
 
-    public void setPetAddress(petAddress petAddress) {
+    public void setPetAddress(PetAddress petAddress) {
         this.petAddress = petAddress;
     }
 

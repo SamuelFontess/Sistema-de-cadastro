@@ -1,4 +1,4 @@
-package Repository;
+package repository;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

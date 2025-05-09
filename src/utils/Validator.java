@@ -1,21 +1,21 @@
-package Utils;
+package utils;
 
-import Model.Entities.petEnum;
-import Model.Entities.petType;
+import model.entities.PetEnum;
+import model.entities.PetType;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class validator {
-    public static petType typevalid(Scanner sc) {
+public class Validator {
+    public static PetType typevalid(Scanner sc) {
         try {
             System.out.print("Digite um número: ");
             int numValido = sc.nextInt();
             switch (numValido) {
                 case 1:
-                    return petType.cachorro;
+                    return PetType.cachorro;
                 case 2:
-                    return petType.gato;
+                    return PetType.gato;
                 default:
                     throw new IllegalArgumentException("Número inválido. Use 1 para cachorro ou 2 para gato.");
             }
@@ -26,15 +26,15 @@ public class validator {
         }
     }
 
-    public static petEnum sexvalid(Scanner sc) {
+    public static PetEnum sexvalid(Scanner sc) {
         try {
             System.out.print("Digite um número: ");
             int numValido = sc.nextInt();
             switch (numValido) {
                 case 1:
-                    return petEnum.masculino;
+                    return PetEnum.masculino;
                 case 2:
-                    return petEnum.feminino;
+                    return PetEnum.feminino;
                 default:
                     throw new IllegalArgumentException("Número inválido. Use 1 para cachorro ou 2 para gato.");
             }

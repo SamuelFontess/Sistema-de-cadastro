@@ -1,22 +1,21 @@
-package Services;
+package services;
 
-import Model.Dao.petDaoJDBC;
-import Model.Entities.pet;
-import Model.Entities.petAddress;
-import Utils.validator;
-import Model.Dao.petDao;
+import model.Dao.PetDaoJDBC;
+import model.entities.Pet;
+import model.entities.PetAddress;
+import utils.Validator;
 import db.DB;
 
 import java.util.Scanner;
 
-public class cadastropet {
+public class CadastroPet {
     public static void createPet(){
         Scanner sc = new Scanner(System.in);
 
-        petDaoJDBC petDaoJDBC = new petDaoJDBC(DB.getConnection());
+        PetDaoJDBC petDaoJDBC = new PetDaoJDBC(DB.getConnection());
 
-        pet pet = new pet();
-        petAddress petAddress = new petAddress();
+        Pet pet = new Pet();
+        PetAddress petAddress = new PetAddress();
 
         System.out.println("digite o nome do pet: ");
         pet.setPetName(sc.nextLine());
@@ -25,11 +24,11 @@ public class cadastropet {
         pet.setPetSurname(sc.nextLine());
 
         System.out.println("digite o tipo do pet: 1 = cachorro | 2 = gato ");
-        pet.setPetType(validator.typevalid(sc));
+        pet.setPetType(Validator.typevalid(sc));
         sc.nextLine();
 
         System.out.println("digite o sexo do pet: 1 = masculino | 2 = feminino ");
-        pet.setPetGender(validator.sexvalid(sc));
+        pet.setPetGender(Validator.sexvalid(sc));
         sc.nextLine();
 
         System.out.println("digite o endereço do pet: ");
@@ -47,11 +46,11 @@ public class cadastropet {
         pet.setPetAddress(petAddress);
 
         System.out.println("digite a idade do pet: ");
-        pet.setPetAge(validator.agevalid(sc));
+        pet.setPetAge(Validator.agevalid(sc));
         sc.nextLine();
 
         System.out.println("digite o peso do pet: ");
-        pet.setPetWeight(validator.weightvalid(sc));
+        pet.setPetWeight(Validator.weightvalid(sc));
         sc.nextLine();
 
         System.out.println("digite a raça do pet: ");
