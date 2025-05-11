@@ -5,6 +5,7 @@ import db.DB;
 import db.DbException;
 import db.DbIntegrityException;
 import model.entities.Pet;
+import utils.QueryLoader;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -43,11 +44,8 @@ public class PetDaoJDBC implements PetDao {
     public void insert(Pet obj) {
         PreparedStatement st = null;
         try {
-            st = conn.prepareStatement(
-                    "INSERT INTO cadastros " +
-                            "(nome, sobrenome, tipo_pet, sexo, rua, numero_casa, cidade, idade, peso, raca) " +
-                            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                    Statement.RETURN_GENERATED_KEYS);
+            String query = QueryLoader.getQuery("insert.new.user");
+            st = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
             st.setString(1, obj.getPetName());                      // nome
             st.setString(2, obj.getPetSurname());                   // sobrenome
@@ -76,26 +74,14 @@ public class PetDaoJDBC implements PetDao {
         } finally {
             DB.closeStatement(st);
         }
-
     }
 
     @Override
     public void update(Pet obj) {
         PreparedStatement st = null;
         try {
-            st = conn.prepareStatement(
-                    "UPDATE cadastros " +
-                            "SET nome = ?, " +
-                            "sobrenome = ?, " +
-                            "tipo_pet = ?, " +
-                            "sexo = ?, " +
-                            "rua = ?, " +
-                            "numero_casa = ?, " +
-                            "cidade = ?, " +
-                            "idade = ?, " +
-                            "peso = ?, " +
-                            "raca = ? " +
-                            "WHERE id = ?");
+            String query = QueryLoader.getQuery("update.users");
+            st = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
             st.setString(1, obj.getPetName());
             st.setString(2, obj.getPetSurname());
@@ -123,8 +109,8 @@ public class PetDaoJDBC implements PetDao {
     public void deleteById(Integer id) {
         PreparedStatement st = null;
         try {
-            st = conn.prepareStatement(
-                    "DELETE FROM cadastros WHERE id = ?");
+            String query = QueryLoader.getQuery("delete.user.by.id");
+            st = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
             st.setInt(1, id);
 
@@ -144,8 +130,8 @@ public class PetDaoJDBC implements PetDao {
         ResultSet rs = null;
 
         try {
-            st = conn.prepareStatement(
-                    "SELECT * FROM cadastros WHERE id = ?");
+            String query = QueryLoader.getQuery("find.user.by.id");
+            st = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
             st.setInt(1, id);
             rs = st.executeQuery();
@@ -171,8 +157,8 @@ public class PetDaoJDBC implements PetDao {
         ResultSet rs = null;
 
         try {
-            st = conn.prepareStatement(
-                    "SELECT * FROM cadastros WHERE nome = ?");
+            String query = QueryLoader.getQuery("find.user.by.name");
+            st = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
             st.setString(1, name);
             rs = st.executeQuery();
@@ -198,8 +184,8 @@ public class PetDaoJDBC implements PetDao {
         ResultSet rs = null;
 
         try {
-            st = conn.prepareStatement(
-                    "SELECT * FROM cadastros WHERE tipo_pet = ?");
+            String query = QueryLoader.getQuery("find.user.by.type");
+            st = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
             st.setString(1, type.toString().toLowerCase());
             rs = st.executeQuery();
@@ -225,8 +211,8 @@ public class PetDaoJDBC implements PetDao {
         ResultSet rs = null;
 
         try {
-            st = conn.prepareStatement(
-                    "SELECT * FROM cadastros WHERE sexo = ?");
+            String query = QueryLoader.getQuery("find.user.by.gender");
+            st = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
             st.setString(1, gender.toString().toLowerCase());
             rs = st.executeQuery();
@@ -252,8 +238,8 @@ public class PetDaoJDBC implements PetDao {
         ResultSet rs = null;
 
         try {
-            st = conn.prepareStatement(
-                    "SELECT * FROM cadastros ORDER BY nome");
+            String query = QueryLoader.getQuery("get.all.users");
+            st = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
             rs = st.executeQuery();
 

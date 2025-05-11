@@ -1,7 +1,10 @@
-package main;
+package main.java;
 
 import services.CadastroPet;
+import utils.QueryLoader;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Scanner;
 
 public class Main {
