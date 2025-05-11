@@ -1,45 +1,23 @@
 package main.java;
 
 import services.CadastroPet;
-import utils.QueryLoader;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Scanner;
+import services.PrintMenu;
+import java.util.Scanner;  // Importar o Scanner
 
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
-        int opcao = 0;
+        PrintMenu pm = new PrintMenu(scanner);
+        int option;
 
         do {
-            System.out.println("\n--- MENU PET ---");
-            System.out.println("1. Cadastrar um novo pet");
-            System.out.println("2. Alterar os dados do pet cadastrado");
-            System.out.println("3. Deletar um pet cadastrado");
-            System.out.println("4. Listar todos os pets cadastrados");
-            System.out.println("5. Listar pets por critério (idade, nome, raça)");
-            System.out.println("6. Sair");
-            System.out.print("Escolha uma opção: ");
+            option = pm.printarMenuPrincipal();
 
-            if (sc.hasNextLine()) {
-                String entrada = sc.nextLine();
-                try {
-                    opcao = Integer.parseInt(entrada);
-                } catch (NumberFormatException e) {
-                    System.out.println("Entrada inválida. Digite um número.");
-                    opcao = -1;
-                    continue;
-                }
-            } else {
-                System.out.println("Nenhuma linha encontrada. Encerrando.");
-                break;
-            }
-
-            switch (opcao) {
+            switch (option) {
                 case 1:
-                CadastroPet.createPet();
+                    CadastroPet.createPet();
+                    System.exit(0);
                     break;
                 case 2:
 
@@ -54,14 +32,13 @@ public class Main {
 
                     break;
                 case 6:
-                    System.exit(0);
+                    System.out.println("Fechando programa");
                     break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
             }
+        } while (option != 6);
 
-        } while (opcao != 6);
-
-        sc.close();
+        scanner.close();
     }
 }
