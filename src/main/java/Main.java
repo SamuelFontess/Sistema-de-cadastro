@@ -2,6 +2,8 @@ package main.java;
 
 import services.CadastroPet;
 import services.PrintMenu;
+import services.ListarPet;
+
 import java.util.Scanner;  // Importar o Scanner
 
 public class Main {
@@ -20,8 +22,7 @@ public class Main {
                     System.exit(0);
                     break;
                 case 2:
-                    System.out.println("2. Listar pets por algum critério (nome, tipo, gênero, (idade, peso, cidade - implementar)");
-
+                    ListarPet.ListarPet();
                     break;
                 case 3:
 

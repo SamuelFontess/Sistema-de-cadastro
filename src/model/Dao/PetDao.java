@@ -12,10 +12,10 @@ public interface PetDao {
     void deleteById(Integer id);
     Pet findById(Integer id);
     Pet findByName(String name);
-    Pet findByType(PetType type);
-    Pet findByGender(PetGender gender);
+    List<Pet> findByType(String tipoPet);
+    List<Pet> findByGender(String gender);
     List<Pet> findAll();
     Pet findByCity(String city);
-    Pet findByAge(Integer age);
-    Pet findByWeight(Double weight);
+    List<Pet> findByAge(int minAge, int maxAge);
+    List<Pet> findByWeight(double minWeight, double maxWeight);
 }

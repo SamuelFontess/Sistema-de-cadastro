@@ -162,26 +162,23 @@ public class PetDaoJDBC implements PetDao {
             String query = QueryLoader.getQuery("find.user.by.name");
             st = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
-            st.setString(1, name);
+            st.setString(1, name.toLowerCase()); // case-insensitive
             rs = st.executeQuery();
 
             if (rs.next()) {
-                Pet obj = instantiatePet(rs);
-                return obj;
+                return instantiatePet(rs);
             }
             return null;
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new DbException(e.getMessage());
-        }
-        finally {
+        } finally {
             DB.closeStatement(st);
             DB.closeResultSet(rs);
         }
     }
 
     @Override
-    public Pet findByType(PetType type) {
+    public List<Pet> findByType(String tipoPet) {
         PreparedStatement st = null;
         ResultSet rs = null;
 
@@ -189,14 +186,17 @@ public class PetDaoJDBC implements PetDao {
             String query = QueryLoader.getQuery("find.user.by.type");
             st = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
-            st.setString(1, type.toString().toLowerCase());
+            st.setString(1, tipoPet);  // Passa a string diretamente, sem conversão
             rs = st.executeQuery();
 
-            if (rs.next()) {
+            List<Pet> list = new ArrayList<>();
+
+            while (rs.next()) {
                 Pet obj = instantiatePet(rs);
-                return obj;
+                list.add(obj);
             }
-            return null;
+
+            return list;
         }
         catch (SQLException e) {
             throw new DbException(e.getMessage());
@@ -208,7 +208,7 @@ public class PetDaoJDBC implements PetDao {
     }
 
     @Override
-    public Pet findByGender(PetGender gender) {
+    public List<Pet> findByGender(String gender) {
         PreparedStatement st = null;
         ResultSet rs = null;
 
@@ -216,14 +216,17 @@ public class PetDaoJDBC implements PetDao {
             String query = QueryLoader.getQuery("find.user.by.gender");
             st = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
-            st.setString(1, gender.toString().toLowerCase());
+            st.setString(1, gender);  // Passa a string diretamente (masculino ou feminino)
             rs = st.executeQuery();
 
-            if (rs.next()) {
+            List<Pet> list = new ArrayList<>();
+
+            while (rs.next()) {
                 Pet obj = instantiatePet(rs);
-                return obj;
+                list.add(obj);
             }
-            return null;
+
+            return list;
         }
         catch (SQLException e) {
             throw new DbException(e.getMessage());
@@ -272,26 +275,23 @@ public class PetDaoJDBC implements PetDao {
             String query = QueryLoader.getQuery("find.user.by.city");
             st = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
-            st.setString(1, city);
+            st.setString(1, city.toLowerCase());
             rs = st.executeQuery();
 
             if (rs.next()) {
-                Pet obj = instantiatePet(rs);
-                return obj;
+                return instantiatePet(rs);
             }
             return null;
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new DbException(e.getMessage());
-        }
-        finally {
+        } finally {
             DB.closeStatement(st);
             DB.closeResultSet(rs);
         }
     }
 
     @Override
-    public Pet findByAge(Integer age) {
+    public List<Pet> findByAge(int minAge, int maxAge) {
         PreparedStatement st = null;
         ResultSet rs = null;
 
@@ -299,15 +299,18 @@ public class PetDaoJDBC implements PetDao {
             String query = QueryLoader.getQuery("find.user.by.age");
             st = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
-            st.setInt(1, age);
-            st.setInt(2, age);
+            st.setInt(1, minAge);
+            st.setInt(2, maxAge);
             rs = st.executeQuery();
 
-            if (rs.next()) {
+            List<Pet> list = new ArrayList<>();
+
+            while (rs.next()) {
                 Pet obj = instantiatePet(rs);
-                return obj;
+                list.add(obj);
             }
-            return null;
+
+            return list;
         }
         catch (SQLException e) {
             throw new DbException(e.getMessage());
@@ -319,7 +322,7 @@ public class PetDaoJDBC implements PetDao {
     }
 
     @Override
-    public Pet findByWeight(Double weight) {
+    public List<Pet> findByWeight(double minWeight, double maxWeight) {
         PreparedStatement st = null;
         ResultSet rs = null;
 
@@ -327,15 +330,18 @@ public class PetDaoJDBC implements PetDao {
             String query = QueryLoader.getQuery("find.user.by.weight");
             st = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
-            st.setDouble(1, weight);
-            st.setDouble(2, weight);
+            st.setDouble(1, minWeight);
+            st.setDouble(2, maxWeight);
             rs = st.executeQuery();
 
-            if (rs.next()) {
+            List<Pet> list = new ArrayList<>();
+
+            while (rs.next()) {
                 Pet obj = instantiatePet(rs);
-                return obj;
+                list.add(obj);
             }
-            return null;
+
+            return list;
         }
         catch (SQLException e) {
             throw new DbException(e.getMessage());

@@ -63,7 +63,7 @@ public class Validator {
     public static float weightvalid(Scanner sc) {
         try {
             float numValido = sc.nextFloat();
-            if (numValido <= 0 || numValido > 60) {
+            if (numValido <= 0 || numValido > 70) {
                 throw new IllegalArgumentException("Peso inválido. Deve ser maior que 0kg e menor ou igual a 60kg.");
             }
             return numValido;
@@ -73,5 +73,41 @@ public class Validator {
             System.out.println(e.getMessage());
         }
         return 0;
+    }
+
+    public static boolean isValidName(String name) {
+        return name != null && name.matches("^[A-Za-zÀ-ÿ\\s]{2,30}$");
+    }
+
+    public static boolean isValidCity(String city) {
+        return city != null && city.matches("^[A-Za-zÀ-ÿ\\s]{2,50}$");
+    }
+
+    public static boolean isValidAgeRange(int minAge, int maxAge) {
+        if (minAge > maxAge) {
+            System.out.println("A idade mínima não pode ser maior que a idade máxima.");
+            return false;
+        }
+
+        if (minAge < 0 || maxAge < 0 || minAge > 20 || maxAge > 20) {
+            System.out.println("As idades devem estar entre 0 e 20.");
+            return false;
+        }
+
+        return true;
+    }
+
+    public static boolean isValidWeightRange(double minWeight, double maxWeight) {
+        if (minWeight > maxWeight) {
+            System.out.println("O peso mínimo não pode ser maior que o peso máximo.");
+            return false;
+        }
+
+        if (minWeight < 0 || maxWeight < 0 || minWeight > 70 || maxWeight > 70) {
+            System.out.println("Os pesos devem estar entre 0 e 70.");
+            return false;
+        }
+
+        return true;
     }
 }
