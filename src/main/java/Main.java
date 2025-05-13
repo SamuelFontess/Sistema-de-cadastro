@@ -20,6 +20,7 @@ public class Main {
                     System.exit(0);
                     break;
                 case 2:
+                    System.out.println("2. Listar pets por algum critério (nome, tipo, gênero, (idade, peso, cidade - implementar)");
 
                     break;
                 case 3:
@@ -32,7 +33,7 @@ public class Main {
 
                     break;
                 case 6:
-                    System.out.println("Fechando programa");
+                    System.out.println("Fechando programa...");
                     break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");

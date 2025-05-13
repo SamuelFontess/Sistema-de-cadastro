@@ -1,7 +1,7 @@
 package utils;
 
-import model.entities.PetEnum;
-import model.entities.PetType;
+import model.Enum.PetGender;
+import model.Enum.PetType;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -26,15 +26,15 @@ public class Validator {
         }
     }
 
-    public static PetEnum sexvalid(Scanner sc) {
+    public static PetGender sexvalid(Scanner sc) {
         try {
             System.out.print("Digite um número: ");
             int numValido = sc.nextInt();
             switch (numValido) {
                 case 1:
-                    return PetEnum.masculino;
+                    return PetGender.masculino;
                 case 2:
-                    return PetEnum.feminino;
+                    return PetGender.feminino;
                 default:
                     throw new IllegalArgumentException("Número inválido. Use 1 para cachorro ou 2 para gato.");
             }

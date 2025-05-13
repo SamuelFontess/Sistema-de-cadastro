@@ -1,5 +1,7 @@
 package model.Dao;
 
+import model.Enum.PetGender;
+import model.Enum.PetType;
 import model.entities.*;
 import db.DB;
 import db.DbException;
@@ -26,7 +28,7 @@ public class PetDaoJDBC implements PetDao {
         pet.setPetName(rs.getString("nome"));
         pet.setPetSurname(rs.getString("sobrenome"));
         pet.setPetType(PetType.valueOf(rs.getString("tipo_pet")));
-        pet.setPetGender(PetEnum.valueOf(rs.getString("sexo")));
+        pet.setPetGender(PetGender.valueOf(rs.getString("sexo")));
         pet.setPetAge(rs.getInt("idade"));
         pet.setPetWeight(rs.getFloat("peso"));
         pet.setPetBreed(rs.getString("raca"));
@@ -206,7 +208,7 @@ public class PetDaoJDBC implements PetDao {
     }
 
     @Override
-    public Pet findByGender(PetEnum gender) {
+    public Pet findByGender(PetGender gender) {
         PreparedStatement st = null;
         ResultSet rs = null;
 
@@ -251,6 +253,89 @@ public class PetDaoJDBC implements PetDao {
             }
 
             return list;
+        }
+        catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
+        finally {
+            DB.closeStatement(st);
+            DB.closeResultSet(rs);
+        }
+    }
+
+    @Override
+    public Pet findByCity(String city) {
+        PreparedStatement st = null;
+        ResultSet rs = null;
+
+        try {
+            String query = QueryLoader.getQuery("find.user.by.city");
+            st = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+
+            st.setString(1, city);
+            rs = st.executeQuery();
+
+            if (rs.next()) {
+                Pet obj = instantiatePet(rs);
+                return obj;
+            }
+            return null;
+        }
+        catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
+        finally {
+            DB.closeStatement(st);
+            DB.closeResultSet(rs);
+        }
+    }
+
+    @Override
+    public Pet findByAge(Integer age) {
+        PreparedStatement st = null;
+        ResultSet rs = null;
+
+        try {
+            String query = QueryLoader.getQuery("find.user.by.age");
+            st = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+
+            st.setInt(1, age);
+            st.setInt(2, age);
+            rs = st.executeQuery();
+
+            if (rs.next()) {
+                Pet obj = instantiatePet(rs);
+                return obj;
+            }
+            return null;
+        }
+        catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
+        finally {
+            DB.closeStatement(st);
+            DB.closeResultSet(rs);
+        }
+    }
+
+    @Override
+    public Pet findByWeight(Double weight) {
+        PreparedStatement st = null;
+        ResultSet rs = null;
+
+        try {
+            String query = QueryLoader.getQuery("find.user.by.weight");
+            st = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+
+            st.setDouble(1, weight);
+            st.setDouble(2, weight);
+            rs = st.executeQuery();
+
+            if (rs.next()) {
+                Pet obj = instantiatePet(rs);
+                return obj;
+            }
+            return null;
         }
         catch (SQLException e) {
             throw new DbException(e.getMessage());

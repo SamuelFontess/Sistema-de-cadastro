@@ -1,10 +1,13 @@
 package model.entities;
 
+import model.Enum.PetGender;
+import model.Enum.PetType;
+
 public class Pet {
     private String petName;
     private String petSurname;
     private PetType petType;
-    private PetEnum petGender;
+    private PetGender petGender;
     private PetAddress petAddress;
     private float petAge;
     private float petWeight;
@@ -14,7 +17,7 @@ public class Pet {
     public Pet() {
     }
 
-    public Pet(String petName, String petSurname, String petBreed, float petWeight, float petAge, PetAddress petAddress, PetEnum petGender, PetType petType) {
+    public Pet(String petName, String petSurname, String petBreed, float petWeight, float petAge, PetAddress petAddress, PetGender petGender, PetType petType) {
         this.petName = petName;
         this.petSurname = petSurname;
         this.petBreed = petBreed;
@@ -66,11 +69,11 @@ public class Pet {
         this.petType = petType;
     }
 
-    public PetEnum getPetGender() {
+    public PetGender getPetGender() {
         return petGender;
     }
 
-    public void setPetGender(PetEnum petGender) {
+    public void setPetGender(PetGender petGender) {
         this.petGender = petGender;
     }
 

@@ -59,8 +59,5 @@ public class CadastroPet {
 
         System.out.println("pet cadastrado com sucesso!");
         sc.close();
-
-
-
     }
 }

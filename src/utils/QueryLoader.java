@@ -16,7 +16,7 @@ public class QueryLoader {
             }
 
             queries.load(input);
-            System.out.println("sql.properties carregado com sucesso ✅");
+            System.out.println("sql.properties carregado com sucesso");
         } catch (Exception e) {
             throw new RuntimeException("Erro ao carregar sql.properties", e);
         }
