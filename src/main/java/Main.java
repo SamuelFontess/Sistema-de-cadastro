@@ -1,9 +1,6 @@
 package main.java;
 
-import services.CadastroPet;
-import services.DeletarPet;
-import services.PrintMenu;
-import services.ListarPet;
+import services.*;
 
 import java.util.Scanner;  // Importar o Scanner
 
@@ -23,13 +20,15 @@ public class Main {
                     System.exit(0);
                     break;
                 case 2:
-                    ListarPet.ListarPet();
+                    ListarPetFiltros.ListarPetFiltros();
                     break;
                 case 3:
                     DeletarPet.deletarPet();
+                    System.exit(0);
                     break;
                 case 4:
-
+                    ListarAllPets.ListarAllPets();
+                    System.exit(0);
                     break;
                 case 5:
 

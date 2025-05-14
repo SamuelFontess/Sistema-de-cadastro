@@ -162,7 +162,7 @@ public class PetDaoJDBC implements PetDao {
             String query = QueryLoader.getQuery("find.user.by.name");
             st = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
-            st.setString(1, name.toLowerCase()); // case-insensitive
+            st.setString(1, name.toLowerCase());
             rs = st.executeQuery();
 
             if (rs.next()) {

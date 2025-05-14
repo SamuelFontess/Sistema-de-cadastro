@@ -11,8 +11,8 @@ import java.util.List;
 import java.util.Scanner;
 
 
-public class ListarPet {
-    public static void ListarPet() {
+public class ListarPetFiltros {
+    public static void ListarPetFiltros() {
         Scanner scanner = new Scanner(System.in);
 
         Connection conn = DB.getConnection();
