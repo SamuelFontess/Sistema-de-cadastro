@@ -12,7 +12,7 @@ public class PrintMenu {
 
     public int printarMenuPrincipal() {
         System.out.println("\n1. Cadastrar um novo pet");
-        System.out.println("2. Listar pets por algum critério (nome, tipo (gato/cachorro), genero (masculino/feminino), idade, peso, cidade )");
+        System.out.println("2. Listar pets por algum critério: nome, tipo (gato/cachorro), genero (masculino/feminino), idade, peso, cidade");
         System.out.println("3. Deletar um pet cadastrado");
         System.out.println("4. Listar todos os pets cadastrados");
         System.out.println("5. Alterar os dados do pet cadastrados");

@@ -22,7 +22,7 @@ public class ListarPet {
         int option;
 
         do {
-            option = pm.printarMenuFiltrar();  // (nome, tipo, gênero, (idade, peso, cidade - implementar)
+            option = pm.printarMenuFiltrar();
 
             switch (option) {
                 case 1:
