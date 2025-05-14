@@ -37,4 +37,13 @@ public class PetAddress {
     public void setStreet(String street) {
         this.street = street;
     }
+
+    @Override
+    public String toString() {
+        return "PetAddress{" +
+                "city='" + city + '\'' +
+                ", Number=" + Number +
+                ", street='" + street + '\'' +
+                '}';
+    }
 }

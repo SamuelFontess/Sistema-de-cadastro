@@ -1,6 +1,7 @@
 package main.java;
 
 import services.CadastroPet;
+import services.DeletarPet;
 import services.PrintMenu;
 import services.ListarPet;
 
@@ -25,7 +26,7 @@ public class Main {
                     ListarPet.ListarPet();
                     break;
                 case 3:
-
+                    DeletarPet.deletarPet();
                     break;
                 case 4:
 

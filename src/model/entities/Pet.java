@@ -100,4 +100,19 @@ public class Pet {
     public void setId(int id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Pet{" +
+                "id=" + id +
+                ", petName='" + petName + '\'' +
+                ", petSurname='" + petSurname + '\'' +
+                ", petType=" + petType +
+                ", petGender=" + petGender +
+                ", petAddress=" + petAddress +
+                ", petAge=" + petAge +
+                ", petWeight=" + petWeight +
+                ", petBreed='" + petBreed + '\'' +
+                '}';
+    }
 }

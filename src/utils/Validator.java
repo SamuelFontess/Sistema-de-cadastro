@@ -110,4 +110,14 @@ public class Validator {
 
         return true;
     }
+
+    public static boolean isValidInteger(String input) {
+        if (input == null || input.isEmpty()) return false;
+        try {
+            Integer.parseInt(input);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
 }

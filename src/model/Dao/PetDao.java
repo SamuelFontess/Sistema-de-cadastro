@@ -1,8 +1,6 @@
 package model.Dao;
 
 import model.entities.Pet;
-import model.Enum.PetGender;
-import model.Enum.PetType;
 
 import java.util.List;
 

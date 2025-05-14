@@ -3,8 +3,6 @@ package services;
 import db.DB;
 import model.Dao.PetDao;
 import model.Dao.PetDaoJDBC;
-import model.Enum.PetGender;
-import model.Enum.PetType;
 import model.entities.Pet;
 import utils.Validator;
 
@@ -43,6 +41,7 @@ public class ListarPet {
                     } else {
                         System.out.println("Nenhum pet encontrado com esse nome.");
                     }
+                    System.exit(0);
                     break;
 
                 case 2:
@@ -69,6 +68,7 @@ public class ListarPet {
                     } else {
                         System.out.println("Nenhum pet encontrado com esse tipo.");
                     }
+                    System.exit(0);
                     break;
 
                 case 3:
@@ -95,6 +95,7 @@ public class ListarPet {
                     } else {
                         System.out.println("Nenhum pet encontrado com esse gênero.");
                     }
+                    System.exit(0);
                     break;
 
                 case 4:
@@ -117,6 +118,7 @@ public class ListarPet {
                     } else {
                         System.out.println("Nenhum pet encontrado nessa faixa etária.");
                     }
+                    System.exit(0);
                     break;
 
                 case 5:
@@ -139,6 +141,7 @@ public class ListarPet {
                     } else {
                         System.out.println("Nenhum pet encontrado nesse intervalo de peso.");
                     }
+                    System.exit(0);
                     break;
 
                 case 6:
@@ -152,6 +155,7 @@ public class ListarPet {
 
                     Pet petByCity = petDao.findByCity(cidade);
                     System.out.println(petByCity != null ? petByCity : "Nenhum pet encontrado com essa cidade.");
+                    System.exit(0);
                     break;
 
                 default:
