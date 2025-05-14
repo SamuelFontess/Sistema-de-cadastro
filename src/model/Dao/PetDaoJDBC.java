@@ -22,7 +22,7 @@ public class PetDaoJDBC implements PetDao {
 
     private Pet instantiatePet(ResultSet rs) throws SQLException {
         Pet pet = new Pet();
-        PetAddress address = new PetAddress();
+        PetAddress address = new PetAddress(); // instancia o pet sem precisar ficar repetindo o codigo
 
         pet.setId(rs.getInt("Id"));
         pet.setPetName(rs.getString("nome"));
@@ -186,7 +186,7 @@ public class PetDaoJDBC implements PetDao {
             String query = QueryLoader.getQuery("find.user.by.type");
             st = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
-            st.setString(1, tipoPet);  // Passa a string diretamente, sem conversão
+            st.setString(1, tipoPet);  // Passa a string diretamente (cachorro ou gato)
             rs = st.executeQuery();
 
             List<Pet> list = new ArrayList<>();

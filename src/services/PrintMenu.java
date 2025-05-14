@@ -35,7 +35,7 @@ public class PrintMenu {
 
     public static int numberInRange(Scanner input) {
         while (true) {
-            System.out.print("Digite um número de 1 a 6: ");
+            System.out.print("Digite um número de 1 a 6: "); // verificador de entrada para os menus iniciais
 
             if (input.hasNextInt()) {
                 int num = input.nextInt();

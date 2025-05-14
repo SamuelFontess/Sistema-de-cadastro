@@ -8,12 +8,6 @@ public class PetAddress {
     public PetAddress(){
     }
 
-    public PetAddress(String city, int houseNumber, String street) {
-        this.city = city;
-        this.Number = houseNumber;
-        this.street = street;
-    }
-
     public String getCity() {
         return city;
     }

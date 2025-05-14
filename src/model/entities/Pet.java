@@ -17,18 +17,6 @@ public class Pet {
     public Pet() {
     }
 
-    public Pet(String petName, String petSurname, String petBreed, float petWeight, float petAge, PetAddress petAddress, PetGender petGender, PetType petType) {
-        this.petName = petName;
-        this.petSurname = petSurname;
-        this.petBreed = petBreed;
-        this.petWeight = petWeight;
-        this.petAge = petAge;
-        this.petAddress = petAddress;
-        this.petGender = petGender;
-        this.petType = petType;
-        this.id = id;
-    }
-
     public String getPetBreed() {
         return petBreed;
     }

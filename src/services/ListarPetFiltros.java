@@ -22,7 +22,7 @@ public class ListarPetFiltros {
         int option;
 
         do {
-            option = pm.printarMenuFiltrar();
+            option = pm.printarMenuFiltrar(); //print menu de filtros
 
             switch (option) {
                 case 1:
@@ -99,7 +99,7 @@ public class ListarPetFiltros {
                     break;
 
                 case 4:
-                    System.out.println("Digite a faixa etária para filtrar (faixa mínima e máxima):");
+                    System.out.println("Digite a faixa etária para filtrar (idade mínima e máxima):");
                     System.out.print("Idade mínima: ");
                     int idadeMinima = scanner.nextInt();
 
@@ -113,7 +113,7 @@ public class ListarPetFiltros {
 
                     List<Pet> petsPorIdade = petDao.findByAge(idadeMinima, idadeMaxima);
                     if (!petsPorIdade.isEmpty()) {
-                        System.out.println("Pets encontrados na faixa etária de " + idadeMinima + " a " + idadeMaxima + ":");
+                        System.out.println("Pets encontrados na faixa etária entre " + idadeMinima + " e " + idadeMaxima + ":");
                         petsPorIdade.forEach(System.out::println);
                     } else {
                         System.out.println("Nenhum pet encontrado nessa faixa etária.");
@@ -136,7 +136,7 @@ public class ListarPetFiltros {
 
                     List<Pet> petsPorPeso = petDao.findByWeight(pesoMinimo, pesoMaximo);
                     if (!petsPorPeso.isEmpty()) {
-                        System.out.println("Pets encontrados no intervalo de peso de " + pesoMinimo + " a " + pesoMaximo + ":");
+                        System.out.println("Pets encontrados no intervalo de peso entre " + pesoMinimo + " e " + pesoMaximo + ":");
                         petsPorPeso.forEach(System.out::println);
                     } else {
                         System.out.println("Nenhum pet encontrado nesse intervalo de peso.");

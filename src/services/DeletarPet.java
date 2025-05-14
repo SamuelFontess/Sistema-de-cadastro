@@ -26,10 +26,10 @@ public class DeletarPet {
         }
 
         System.out.println("Lista de pets cadastrados:");
-        System.out.println("ID | Nome           | Tipo      | Gênero");
+        System.out.println("ID |     Nome      | Tipo      | Gênero");
         System.out.println("-------------------------------------------");
 
-        pets.forEach(pet -> System.out.printf("%-3d| %-14s| %-10s| %s%n",
+        pets.forEach(pet -> System.out.printf("%-3d| %-14s| %-10s| %s%n",  //lambda pra printar cada elemento da lista
                 pet.getId(),
                 pet.getPetName() + " " + pet.getPetSurname(),
                 pet.getPetType(),
@@ -54,7 +54,8 @@ public class DeletarPet {
             return;
         }
 
-        System.out.print("Tem certeza que deseja deletar o pet '" + pet.getPetName() + " " + pet.getPetSurname() + "'? (s/n): ");
+        System.out.print("Tem certeza que deseja deletar o pet '"
+                + pet.getPetName() + " " + pet.getPetSurname() + "'? (s/n): "); //verificação antes de apagar
 
         String confirm = sc.nextLine();
 
@@ -68,7 +69,6 @@ public class DeletarPet {
         } else {
             System.out.println("Operação cancelada.");
         }
-
 
         sc.close();
     }

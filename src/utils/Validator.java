@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Validator {
     public static PetType typevalid(Scanner sc) {
         try {
-            System.out.print("Digite um número: ");
+            System.out.print("Digite um número: "); //validação para enumType cahorro/gato
             int numValido = sc.nextInt();
             switch (numValido) {
                 case 1:
@@ -28,7 +28,7 @@ public class Validator {
 
     public static PetGender sexvalid(Scanner sc) {
         try {
-            System.out.print("Digite um número: ");
+            System.out.print("Digite um número: "); // validação para enumGender masculino/feminino
             int numValido = sc.nextInt();
             switch (numValido) {
                 case 1:
@@ -47,13 +47,14 @@ public class Validator {
 
     public static float agevalid(Scanner sc) {
         try {
-            float idade = sc.nextFloat();
+            float idade = sc.nextFloat(); // validação para idade minima e máxima aceitavel no programa
             if (idade <= 0 || idade > 20) {
                 throw new IllegalArgumentException("Idade inválida. Deve estar entre 1 e 20.");
             }
             return idade;
-        } catch (NumberFormatException e) {
+        } catch (InputMismatchException e) {
             System.out.println("Erro: Entrada inválida! Digite um número.");
+            sc.next();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -67,8 +68,9 @@ public class Validator {
                 throw new IllegalArgumentException("Peso inválido. Deve ser maior que 0kg e menor ou igual a 60kg.");
             }
             return numValido;
-        } catch (NumberFormatException e) {
+        } catch (InputMismatchException e) {
             System.out.println("Erro: Entrada inválida! Digite um número.");
+            sc.next();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -76,11 +78,11 @@ public class Validator {
     }
 
     public static boolean isValidName(String name) {
-        return name != null && name.matches("^[A-Za-zÀ-ÿ\\s]{2,30}$");
+        return name != null && name.matches("^[A-Za-zÀ-ÿ\\s]{2,30}$"); //validação de nome somente letras
     }
 
     public static boolean isValidCity(String city) {
-        return city != null && city.matches("^[A-Za-zÀ-ÿ\\s]{2,50}$");
+        return city != null && city.matches("^[A-Za-zÀ-ÿ\\s]{2,50}$"); //validação de cidades somente letras
     }
 
     public static boolean isValidAgeRange(int minAge, int maxAge) {

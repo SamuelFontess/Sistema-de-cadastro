@@ -2,7 +2,7 @@ package main.java;
 
 import services.*;
 
-import java.util.Scanner;  // Importar o Scanner
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,7 +12,7 @@ public class Main {
         int option;
 
         do {
-            option = pm.printarMenuPrincipal();
+            option = pm.printarMenuPrincipal();  // printa o menu inicial do programa
 
             switch (option) {
                 case 1:
