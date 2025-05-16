@@ -122,4 +122,13 @@ public class Validator {
             return false;
         }
     }
+
+    public static boolean isValidFloat(String input) {
+        try {
+            Float.parseFloat(input);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
 }

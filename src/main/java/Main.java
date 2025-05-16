@@ -31,7 +31,7 @@ public class Main {
                     System.exit(0);
                     break;
                 case 5:
-
+                    AtualizaPet.atualizaPet();
                     break;
                 case 6:
                     System.out.println("Fechando programa...");
