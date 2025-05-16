@@ -3,19 +3,18 @@ package services;
 import db.DB;
 import model.Dao.PetDao;
 import model.Dao.PetDaoJDBC;
-import model.Enum.PetGender;
-import model.Enum.PetType;
 import model.entities.Pet;
 import utils.Validator;
 
 import java.sql.Connection;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
 public class AtualizaPet {
     public static void atualizaPet() {
+
         Scanner sc = new Scanner(System.in);
+
         Connection conn = DB.getConnection();
         PetDao petDao = new PetDaoJDBC(conn);
 
@@ -90,30 +89,20 @@ public class AtualizaPet {
         System.out.print("Nova idade: ");
         String idadeInput = sc.nextLine();
         if (!idadeInput.isBlank()) {
-            if (Validator.isValidInteger(idadeInput)) {
-                int idade = Integer.parseInt(idadeInput);
-                if (idade > 0 && idade <= 20) {
-                    pet.setPetAge(idade);
-                } else {
-                    System.out.println("Idade inválida. Deve estar entre 1 e 20.");
-                }
-            } else {
-                System.out.println("Idade inválida. Digite um número inteiro.");
+            Scanner tempScanner = new Scanner(idadeInput);
+            float idade = Validator.agevalid(tempScanner);
+            if (idade > 0) {
+                pet.setPetAge(idade);
             }
         }
 
         System.out.print("Novo peso: ");
         String pesoInput = sc.nextLine();
         if (!pesoInput.isBlank()) {
-            if (Validator.isValidFloat(pesoInput)) {
-                float peso = Float.parseFloat(pesoInput);
-                if (peso > 0 && peso <= 70) {
-                    pet.setPetWeight(peso);
-                } else {
-                    System.out.println("Peso inválido. Deve estar entre 0 e 70.");
-                }
-            } else {
-                System.out.println("Peso inválido. Digite um número válido.");
+            Scanner tempScanner = new Scanner(pesoInput);
+            float peso = Validator.weightvalid(tempScanner);
+            if (peso > 0) {
+                pet.setPetWeight(peso);
             }
         }
 
@@ -128,15 +117,10 @@ public class AtualizaPet {
         System.out.print("Novo número da casa: ");
         String numeroInput = sc.nextLine();
         if (!numeroInput.isBlank()) {
-            if (Validator.isValidInteger(numeroInput)) {
-                int numero = Integer.parseInt(numeroInput);
-                if (numero > 0) {
-                    pet.getPetAddress().setNumber(numero);
-                } else {
-                    System.out.println("Número inválido. Deve ser maior que 0.");
-                }
-            } else {
-                System.out.println("Número da casa inválido.");
+            Scanner tempScanner = new Scanner(numeroInput);
+            int numero = Validator.houseNumberValid(tempScanner);
+            if (numero > 0) {
+                pet.getPetAddress().setNumber(numero);
             }
         }
 

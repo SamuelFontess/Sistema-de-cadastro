@@ -131,4 +131,20 @@ public class Validator {
             return false;
         }
     }
+
+    public static int houseNumberValid(Scanner sc) {
+        try {
+            int numero = sc.nextInt();
+            if (numero > 0) {
+                return numero;
+            } else {
+                System.out.println("Número inválido. Deve ser maior que 0.");
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Número da casa inválido.");
+            sc.next();
+        }
+        return 0;
+    }
 }
+
